@@ -29,13 +29,13 @@ Using the "Monte Carlo" model, the candidate data is permuted thousands of times
 
 ## User's input
 * The data - A text file formatted as a table (data frame), where rows represent the different "transient candidates" (genes) and columns represent the samples, ordered by time.
-* Timestamps - A vector of the ordered time stamps of the samples.
+* Timestamps - A numeric vector of the ordered time stamps of the samples (in the same time units).
 * Algorithm choice - Either Euclidean or DTW (as explained above).
-* "Monte Carlo" - The desired number of permutation (The default is 5000). A higher number increases accuracy but also runtime.
+* "Monte Carlo" - The desired number of permutations (The default is 5000). A higher number increases accuracy but also runtime.
 
 ## Output
 * The data - The input text file with additional columns for calculated P-values and adjusted P-values.
-* plots - A grid of plots visualizing the changes over time and fold-changes for each significant candidate (gene).
+* plots - A grid of plots, in a png file, visualizing the changes over time and fold-changes for each significant candidate (gene).
 
 ## How to run and required packages
 **ADD
