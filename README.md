@@ -38,7 +38,14 @@ Using the "Monte Carlo" model, the candidate data is permuted thousands of times
 * plots - A grid of plots, in a png file, visualizing the changes over time and fold-changes for each significant candidate (gene).
 
 ## How to run and required packages
-**ADD
+How to run - **ADD
+The required packages for running the code are:
+* numpy
+* pandas
+* matplotlib
+* seaborn
+* dtaidistance
+* statsmodels
 
 ## Acknowledgments
 * This tool was developed for a project in [Dr. Yaron Antebi's lab](https://www.weizmann.ac.il/molgen/Antebi/).
