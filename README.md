@@ -33,7 +33,7 @@ The tool requires the following inputs, provided as command-line arguments:
 - `--df` (required): Path to the input data file (formatted as a tab-separated table, where rows represent transient candidates and columns represent time-ordered samples).
 - `--algorithm` (required): Algorithm choice, either "Euclidean" or "DTW".
 - `--monte_carlo`: Number of permutations for Monte Carlo simulations (default: 5000). Higher values increase accuracy but also runtime.
-- `--adj_method`: Multiple testing correction method (default: FDR-BH).
+- `--adj_method`: Multiple testing correction method (default: "fdr_bh").
 - `--time_stamps` (required): A space-separated list of time points corresponding to the samples.
 - `--repeat1_cols` (required): A space-separated list of column indices representing the first set of repeats.
 - `--repeat2_cols`: A space-separated list of column indices representing the second set of repeats (default: empty list).
