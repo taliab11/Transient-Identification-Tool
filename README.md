@@ -27,48 +27,42 @@ In the input parameters, you can choose your preferred method (as explained abov
 Significance is determined by identifying the "transient candidates" (e.g., genes) that score as significant according to the chosen method.
 Using the "Monte Carlo" model, the candidate data is permuted thousands of times, and scores are calculated for each permutation with the chosen algorithm. The score of the actual candidate is then compared to the distribution of scores from these permutations. A candidate is considered significant, with a high probability of being transient, if its P-value is below 0.05 (after FDR adjustment for multiple hypotheses).
 
-## User's input
-* The data - A text file formatted as a table (data frame), where rows represent the different "transient candidates" (genes) and columns represent the samples, ordered by time.
-* Algorithm choice - Either Euclidean or DTW (as explained above).
-* "Monte Carlo" - The desired number of permutations (The default is 5000). A higher number increases accuracy but also runtime.
-* Adj. method - Multiple testing correction method (The default is FDR-BH).
-* Timestamps - A numeric list (numbers seperated by spaces) of the ordered time stamps of the samples (in the same time units).
-* Repeats columns - Lists of the column (numbers seperated by spaces) representing each repeat in the data. The code was built for 2 repeats but can be updated easily for more.
-* "Candidate ID" columns - the number of the column in the df containing the "candidate id" (The "gene-symbol" for example).
-* Grid name - The desired name for the png file of the grid of plots.
+## Input and Usage
+The tool requires the following inputs, provided as command-line arguments:
+
+- `--df` (required): Path to the input data file (formatted as a tab-separated table, where rows represent transient candidates and columns represent time-ordered samples).
+- `--algorithm` (required): Algorithm choice, either "Euclidean" or "DTW".
+- `--monte_carlo`: Number of permutations for Monte Carlo simulations (default: 5000). Higher values increase accuracy but also runtime.
+- `--adj_method`: Multiple testing correction method (default: FDR-BH).
+- `--time_stamps` (required): A space-separated list of time points corresponding to the samples.
+- `--repeat1_cols` (required): A space-separated list of column indices representing the first set of repeats.
+- `--repeat2_cols`: A space-separated list of column indices representing the second set of repeats (default: empty list).
+- `--candidate_id_col`: Column index containing candidate identifiers (e.g., gene symbols) (default: 0).
+- `--grid_name`: Desired filename for the output plot grid (just the name, without ".png"; default: "plot_grid.png").
+
+### Example Command
+An example dataset containing gene expression data from an RNA-seq experiment is included in this repository. To run the tool using this dataset:
+
+```sh
+python transient_identification_tool.py --df "example_gene_data_over_time.txt" --algorithm "Euclidean" --time_stamps 0 2 6 12 24 36 48 60 72 96 168 240 --repeat1_cols 2 4 6 8 10 12 14 16 18 20 22 24 --repeat2_cols 3 5 7 9 11 13 15 17 19 21 23 25
+```
 
 ## Output
-* The data - The input text file with additional columns for calculated P-values and adjusted P-values.
-* plots - A grid of plots, in a png file, visualizing the changes over time and fold-changes for each significant candidate (gene). When there aren't any significant candidates, an appropiate message will be printed and the program will end.
+- **Processed Data**: The input file with additional columns containing calculated P-values and adjusted P-values.
+- **Plots**: A PNG file visualizing the changes over time and fold changes for each significant candidate. If no candidates are found to be significant, the program prints an appropriate message and exits.
 
-## How to run and required packages
-To run the program, after downloading, use the following in the command line:
-```
-python transient_identification_tool.py --input_path <input_excel_file_path> --output_path <output_file_path> [options]
-```
-The command line arguments include the following (as detailed above):
-- `--df`: The data text file (dataframe) path (required)
-- `--algorithm` (required)
-- `--monte_carlo`
-- `--adj_method`
-- `--time_stamps` (required)
-- `--repeat1_cols` (required)
-- `--repeat2_cols`
-- `--candidate_id_col`
-- `--grid_name`
+## Installation and Dependencies
+To use this tool, install the required Python packages:
 
-python transient_identification_tool.py --df "example_gene_data_over_time.txt" --algorithm "Euclidean" --time_stamps 0 2 6 12 24 36 48 60 72 96 168 240 --repeat1_cols 2 4 6 8 10 12 14 16 18 20 22 24 --repeat2_cols 3 5 7 9 11 13 15 17 19 21 23 25
+- numpy
+- pandas
+- matplotlib
+- seaborn
+- dtaidistance
+- statsmodels
 
-The required packages for running the code are:
-* numpy
-* pandas
-* matplotlib
-* seaborn
-* dtaidistance
-* statsmodels
-
-To install them, prior to running the code, download the requirements.txt file and run:
-```
+Install them by running:
+```sh
 pip install -r requirements.txt
 ```
 
