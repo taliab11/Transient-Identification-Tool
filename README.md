@@ -31,9 +31,9 @@ Using the "Monte Carlo" model, the candidate data is permuted thousands of times
 * The data - A text file formatted as a table (data frame), where rows represent the different "transient candidates" (genes) and columns represent the samples, ordered by time.
 * Algorithm choice - Either Euclidean or DTW (as explained above).
 * "Monte Carlo" - The desired number of permutations (The default is 5000). A higher number increases accuracy but also runtime.
-* Multiple testing correction method (The default is FDR-BH).
-* Timestamps - A numeric vector of the ordered time stamps of the samples (in the same time units).
-* Repeats columns - The column numbers representing each repeat in the data. The code was built for 2 repeats but can be updated easily for more.
+* Adj. method - Multiple testing correction method (The default is FDR-BH).
+* Timestamps - A numeric list (numbers seperated by spaces) of the ordered time stamps of the samples (in the same time units).
+* Repeats columns - Lists of the column (numbers seperated by spaces) representing each repeat in the data. The code was built for 2 repeats but can be updated easily for more.
 * "Candidate ID" columns - the number of the column in the df containing the "candidate id" (The "gene-symbol" for example).
 * Grid name - The desired name for the png file of the grid of plots.
 
@@ -42,7 +42,22 @@ Using the "Monte Carlo" model, the candidate data is permuted thousands of times
 * plots - A grid of plots, in a png file, visualizing the changes over time and fold-changes for each significant candidate (gene). When there aren't any significant candidates, an appropiate message will be printed and the program will end.
 
 ## How to run and required packages
-How to run - **ADD
+To run the program, after downloading, use the following in the command line:
+```
+python transient_identification_tool.py --input_path <input_excel_file_path> --output_path <output_file_path> [options]
+```
+The command line arguments include the following (as detailed above):
+- `--df`: The data text file (dataframe) path (required)
+- `--algorithm` (required)
+- `--monte_carlo`
+- `--adj_method`
+- `--time_stamps` (required)
+- `--repeat1_cols` (required)
+- `--repeat2_cols`
+- `--candidate_id_col`
+- `--grid_name`
+
+python transient_identification_tool.py --df "example_gene_data_over_time.txt" --algorithm "Euclidean" --time_stamps 0 2 6 12 24 36 48 60 72 96 168 240 --repeat1_cols 2 4 6 8 10 12 14 16 18 20 22 24 --repeat2_cols 3 5 7 9 11 13 15 17 19 21 23 25
 
 The required packages for running the code are:
 * numpy
