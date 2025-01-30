@@ -29,16 +29,21 @@ Using the "Monte Carlo" model, the candidate data is permuted thousands of times
 
 ## User's input
 * The data - A text file formatted as a table (data frame), where rows represent the different "transient candidates" (genes) and columns represent the samples, ordered by time.
-* Timestamps - A numeric vector of the ordered time stamps of the samples (in the same time units).
 * Algorithm choice - Either Euclidean or DTW (as explained above).
 * "Monte Carlo" - The desired number of permutations (The default is 5000). A higher number increases accuracy but also runtime.
+* Multiple testing correction method (The default is FDR-BH).
+* Timestamps - A numeric vector of the ordered time stamps of the samples (in the same time units).
+* Repeats columns - The column numbers representing each repeat in the data. The code was built for 2 repeats but can be updated easily for more.
+* "Candidate ID" columns - the number of the column in the df containing the "candidate id" (The "gene-symbol" for example).
+* Grid name - The desired name for the png file of the grid of plots.
 
 ## Output
 * The data - The input text file with additional columns for calculated P-values and adjusted P-values.
-* plots - A grid of plots, in a png file, visualizing the changes over time and fold-changes for each significant candidate (gene).
+* plots - A grid of plots, in a png file, visualizing the changes over time and fold-changes for each significant candidate (gene). When there aren't any significant candidates, an appropiate message will be printed and the program will end.
 
 ## How to run and required packages
 How to run - **ADD
+
 The required packages for running the code are:
 * numpy
 * pandas
@@ -46,6 +51,11 @@ The required packages for running the code are:
 * seaborn
 * dtaidistance
 * statsmodels
+
+To install them, prior to running the code, download the requirements.txt file and run:
+```
+pip install -r requirements.txt
+```
 
 ## Acknowledgments
 * This tool was developed for a project in [Dr. Yaron Antebi's lab](https://www.weizmann.ac.il/molgen/Antebi/).
