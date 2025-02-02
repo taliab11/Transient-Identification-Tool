@@ -18,7 +18,7 @@ This method measures the sum of all vertical distances between the candidate and
 "Dynamic Time Warping" [(DTW)](https://rtavenar.github.io/blog/dtw.html) is a similarity measure for time series that minimizes the Euclidean distance between aligned series by allowing flexible temporal alignment. Unlike the Euclidean method, DTW identifies "non-linear trends," making it less prone to false positives and potentially more accurate for detecting transients. However, it may also be stricter, missing some "true transients" compared to the Euclidean method.
 
 <p align="center">
-  <img src="euc_vs_dtw.png" width="300" style="border-radius: 15px;">
+  <img src="euc_vs_dtw.png" width="500" style="border-radius: 15px;">
 </p>
 
 In the input parameters, you can choose your preferred method (as explained above). If unsure, it is recommended to run the tool twice using both algorithms.
@@ -51,7 +51,7 @@ python transient_identification_tool.py --df "example_gene_data_overtime.txt" --
 - **Processed Data**: The input file with additional columns containing calculated P-values and adjusted P-values.
 - **Plots**: A PNG file visualizing the changes over time and fold changes for each significant candidate, for example:
 <p align="center">
-  <img src="example_plot_grid.png" width="100" style="border-radius: 15px;">
+  <img src="example_plot_grid.png" width="300" style="border-radius: 15px;">
 </p>
 If no candidates are found to be significant, the program prints an appropriate message and exits.
 
