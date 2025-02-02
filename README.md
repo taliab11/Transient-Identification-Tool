@@ -44,12 +44,16 @@ The tool requires the following inputs, provided as command-line arguments:
 An example dataset containing gene expression data from an RNA-seq experiment is included in this repository. To run the tool using this dataset:
 
 ```sh
-python transient_identification_tool.py --df "example_gene_data_over_time.txt" --algorithm "Euclidean" --time_stamps 0 2 6 12 24 36 48 60 72 96 168 240 --repeat1_cols 2 4 6 8 10 12 14 16 18 20 22 24 --repeat2_cols 3 5 7 9 11 13 15 17 19 21 23 25
+python transient_identification_tool.py --df "example_gene_data_overtime.txt" --algorithm "Euclidean" --time_stamps 0 2 6 12 24 36 48 60 72 96 168 240 --repeat1_cols 2 4 6 8 10 12 14 16 18 20 22 24 --repeat2_cols 3 5 7 9 11 13 15 17 19 21 23 25
 ```
 
 ## Output
 - **Processed Data**: The input file with additional columns containing calculated P-values and adjusted P-values.
-- **Plots**: A PNG file visualizing the changes over time and fold changes for each significant candidate. If no candidates are found to be significant, the program prints an appropriate message and exits.
+- **Plots**: A PNG file visualizing the changes over time and fold changes for each significant candidate, for example:
+<p align="center">
+  <img src="example_plot_grid.png" width="500" style="border-radius: 15px;">
+</p>
+If no candidates are found to be significant, the program prints an appropriate message and exits.
 
 ## Installation and Dependencies
 To use this tool, install the required Python packages:
